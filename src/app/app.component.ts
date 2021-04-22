@@ -1,6 +1,7 @@
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
+import { Subscription } from 'rxjs';
 import { LoginService } from './login.service';
 import * as UserActions from './shared/store/actions';
 import { ICounterState } from './shared/store/reducer';
@@ -12,14 +13,15 @@ import * as Selectors from './shared/store/selector';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
   counter$: ICounterState;
+  subscription: Subscription;
 
   loggedAs: string;
 
   constructor(private store: Store<ICounterState>,
     private loginService: LoginService) {
-    this.loginService.userLogged$.subscribe(e => {
+    this.subscription = this.loginService.userLogged$.subscribe(e => {
       console.log(`FETCHED: ${e}`);
       this.loggedAs = e;
     });
@@ -28,6 +30,10 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     let counter$ = this.store.pipe(select(Selectors.counterValue));
     counter$.subscribe(e => this.counter$ = e);
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   increment(): void {
