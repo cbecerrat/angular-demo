@@ -1,40 +1,36 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgxPermissionsService } from 'ngx-permissions';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
-  loggedAs: string;
+  private loggedAs = new Subject<string>();
+  userLogged$ = this.loggedAs.asObservable();
 
   constructor(private permissionsService: NgxPermissionsService,
     private router: Router) {
+
   }
 
-  getLoggedAs(): string {
-    return this.loggedAs;
+  loginAsAdmin(): void {
+    const permission = 'ADMIN';
+    this.loadPermissions([permission])
+    this.loggedAs.next(permission);
   }
 
-  loginAsAdmin(): string {
-    this.loggedAs = 'ADMIN';
-    this.loadPermissions(['ADMIN']);
-
-    return this.loggedAs;
+  loginAsManager(): void {
+    const permission = 'MANAGER';
+    this.loadPermissions([permission])
+    this.loggedAs.next(permission);
   }
 
-  loginAsManager(): string {
-    this.loggedAs = 'MANAGER';
-    this.loadPermissions(['MANAGER']);
-
-    return this.loggedAs;
-  }
-
-  loginAsUser(): string {
-    this.loggedAs = 'USER';
-    this.loadPermissions(['USER']);
-
-    return this.loggedAs;
+  loginAsUser(): void {
+    const permission = 'USER';
+    this.loadPermissions([permission])
+    this.loggedAs.next(permission);
   }
 
   loadPermissions(permissions: Array<string>): void {

@@ -1,3 +1,4 @@
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { LoginService } from './login.service';
@@ -18,14 +19,15 @@ export class AppComponent implements OnInit {
 
   constructor(private store: Store<ICounterState>,
     private loginService: LoginService) {
-
+    this.loginService.userLogged$.subscribe(e => {
+      console.log(`FETCHED: ${e}`);
+      this.loggedAs = e;
+    });
   }
 
   ngOnInit(): void {
     let counter$ = this.store.pipe(select(Selectors.counterValue));
     counter$.subscribe(e => this.counter$ = e);
-
-    this.loggedAs = this.loginService.getLoggedAs();
   }
 
   increment(): void {
@@ -37,15 +39,15 @@ export class AppComponent implements OnInit {
   }
 
   loginAsAdmin(): void {
-    this.loggedAs = this.loginService.loginAsAdmin();
+    this.loginService.loginAsAdmin();
   }
 
   loginAsManager(): void {
-    this.loggedAs = this.loginService.loginAsManager();
+    this.loginService.loginAsManager();
   }
 
   loginAsUser(): void {
-    this.loggedAs = this.loginService.loginAsUser();
+    this.loginService.loginAsUser();
   }
 
   navigateToAdmin(): void {
