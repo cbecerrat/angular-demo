@@ -1,0 +1,20 @@
+<span class="title">
+    Liberación de sesión
+</span>
+<div class="session-container">
+    <div class="controls-container">
+        <span class="text digital-asset">{{ digitalAsset }}</span>
+        <span>
+            <span class="text label">
+                Estado:
+            </span>
+            <span class="text state">
+                {{ state }}
+            </span>
+        </span>
+
+        <span class="button-container">
+            <button (click)="onCloseSession()">Liberar session</button>
+        </span>
+    </div>
+</div>

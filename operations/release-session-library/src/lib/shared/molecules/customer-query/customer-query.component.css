@@ -1,0 +1,45 @@
+:host {
+    --background-color: #B5B5B5;;
+}
+
+.customer-query-container {
+    background-color: var(--background-color);
+    width: 1065px;
+    height: 60px;
+    border-radius: 4px;
+    padding-left: 24px;
+    padding-right: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.customer-name {
+    padding-right: 24px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.customer-id {
+    padding-left: 24px;
+    font-size: 12px;
+}
+
+.consult-button {
+    float: right;
+}
+
+button {
+    width: 131px;
+    height: 32px;
+    background: #F2F2F2;
+    border-radius: 4px;
+}
+
+.text-container {
+    line-height: 32px;
+}
+
+.text-container:first-child {
+    border-right: 1px solid;
+}

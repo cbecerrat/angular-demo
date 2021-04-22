@@ -11,6 +11,12 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "es2015",
+    "paths": {
+      "release-session-library": [
+        "dist/release-session-library/release-session-library",
+        "dist/release-session-library"
+      ]
+    },
     "module": "es2020",
     "lib": [
       "es2018",

@@ -1,0 +1,60 @@
+:host {
+    --background-color: #FFFFFF;
+}
+
+.session-container {
+    background-color: var(--background-color);
+    width: 100%;
+    max-width: 793px;
+    height: 64px;
+    border-radius: 4px;
+    padding-left: 24px;
+    padding-right: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.controls-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.text {
+    line-height: 32px;
+}
+
+.button-container {
+    padding-left: 24px;
+    border-left: 1px solid;
+    border-color: #888;
+}
+
+button {
+    width: 190px;
+    height: 32px;
+    color: #FFFFFF;
+    background-color: #EC0000;
+    border-radius: 4px;
+}
+
+.title {
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 24px;
+}
+
+.digital-asset {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.state {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.label {
+    color: #888
+}

@@ -1,0 +1,12 @@
+<sm-customer-query
+    [headerText]="customerName"
+    [customerName]="customerId">
+</sm-customer-query>
+<sm-customer-operation-data class="elements"
+    [digitalAssets]="digitalAssets"
+    [operationTypes]="operationTypes">
+</sm-customer-operation-data>
+<sm-customer-session *ngFor="let activeSession of activeSessions" class="elements"
+    [digitalAsset]="activeSession.digitalAsset"
+    [state]="activeSession.state">
+</sm-customer-session>
