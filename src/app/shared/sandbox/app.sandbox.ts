@@ -26,7 +26,7 @@ export class AppRootSandbox {
     const activeSession_1 = new ActiveSession();
     activeSession_1.digitalAsset = 'SuperNet';
     activeSession_1.state = 'Abierta';
-    activeSession.activeSessions = [ activeSession_1 ];
+    activeSession.activeSessions = [activeSession_1];
 
     return activeSession;
   }

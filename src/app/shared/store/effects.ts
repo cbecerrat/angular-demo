@@ -7,39 +7,39 @@ import * as UserActions from './actions';
 
 @Injectable()
 export class UserEffects {
-    constructor(private actions$: Actions, private counterService: CounterService) {
+  constructor(private actions$: Actions, private counterService: CounterService) {
 
-    }
+  }
 
-    incrementCounter$ = createEffect(
-        () => this.actions$.pipe(
-            ofType(UserActions.UserActionTypes.INCREMENT_COUNTER),
-            mergeMap(() =>
-                this.counterService.increment().pipe(
-                    map(e => {
-                        return new UserActions.IncrementCounterSuccess(e);
-                    }),
-                    catchError(error =>
-                        of(new UserActions.IncrementCounterError({ counter: 0 }))
-                    )
-                )
-            )
+  incrementCounter$ = createEffect(
+    () => this.actions$.pipe(
+      ofType(UserActions.UserActionTypes.INCREMENT_COUNTER),
+      mergeMap(() =>
+        this.counterService.increment().pipe(
+          map(e => {
+            return new UserActions.IncrementCounterSuccess(e);
+          }),
+          catchError(error =>
+            of(new UserActions.IncrementCounterError({ counter: 0 }))
+          )
         )
-    );
+      )
+    )
+  );
 
-    decrementCounter$ = createEffect(
-        () => this.actions$.pipe(
-            ofType(UserActions.UserActionTypes.DECREMENT_COUNTER),
-            mergeMap(() =>
-                this.counterService.decrement().pipe(
-                    map(e => {
-                        return new UserActions.DecrementCounterSuccess(e);
-                    }),
-                    catchError(error =>
-                        of(new UserActions.DecrementCounterError({ counter: 0 }))
-                    )
-                )
-            )
+  decrementCounter$ = createEffect(
+    () => this.actions$.pipe(
+      ofType(UserActions.UserActionTypes.DECREMENT_COUNTER),
+      mergeMap(() =>
+        this.counterService.decrement().pipe(
+          map(e => {
+            return new UserActions.DecrementCounterSuccess(e);
+          }),
+          catchError(error =>
+            of(new UserActions.DecrementCounterError({ counter: 0 }))
+          )
         )
-    );
+      )
+    )
+  );
 }

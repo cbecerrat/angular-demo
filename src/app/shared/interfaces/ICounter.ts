@@ -1,3 +1,3 @@
 export interface ICounter {
-    counter: number;
+  counter: number;
 }
