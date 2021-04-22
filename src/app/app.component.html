@@ -1,5 +1,24 @@
+<!--
 <button (click)="decrement()">Decrement</button>
 {{counter$.data.counter}}
 <button (click)="increment()">Increment</button>
-
+-->
+<div>
+    <span *ngIf="loggedAs;else not_logged_in">
+        Logged as [{{loggedAs}}]
+    </span>
+    <ng-template #not_logged_in>
+        Not logged in...
+    </ng-template>
+</div>
+<div>
+    <button (click)="loginAsAdmin()">Login as Admin</button>
+    <button (click)="loginAsManager()">Login as Manager</button>
+    <button (click)="loginAsUser()">Login as User</button>
+</div>
+<div>
+    <button (click)="navigateToAdmin()">Navigate to Admin</button>
+    <button (click)="navigateToManager()">Navigate to Manager</button>
+    <button (click)="navigateToUser()">Navigate to User</button>
+</div>
 <router-outlet></router-outlet>
